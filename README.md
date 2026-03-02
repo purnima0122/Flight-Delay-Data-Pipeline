@@ -1,60 +1,66 @@
-# Flight-Delay-Data-Pipeline
+# Flight Delay Data Pipeline
 
-This project performs ETL and visualization on the `Airline_Delay_Cause.csv` dataset.
+## Problem Statement
+Create a data pipeline for this dataset:  
+https://www.kaggle.com/datasets/sriharshaeedala/airline-delay/data
 
-## Step 3: ETL Pipeline
+The pipeline should include:
+1. Extract (load CSV)
+2. Transform (clean data and transform data if needed)
+3. Load (save the cleaned data in CSV file)
+4. Visualizations using Seaborn:
+- Correlation of attributes
+- Distribution of values in attributes
+- Any 3 additional graphs
+5. Generate insights from the visualizations and explain them.
 
-### Extract (Load CSV)
-- Load `Airline_Delay_Cause.csv` using pandas.
+## Dataset Description (Short)
+This dataset provides detailed information on flight arrivals and delays for U.S. airports, categorized by carriers. It includes metrics such as arriving flights, delays over 15 minutes, cancellations, diversions, and delay-minute breakdown by carrier, weather, NAS (National Airspace System), security, and late aircraft. It can be used to analyze carrier and airport performance and understand key factors contributing to delays.
 
-### Transform (Clean Data and Transform Data if Needed)
-- Remove duplicate rows.
-- Check/fix missing values.
-- Validate and fix data types.
-- Create helpful features like delay/cancel/divert rates.
+## Project Workflow
 
-### Load (Save the Cleaned Data in CSV File)
-- Save final cleaned data as `Airline_Delay_Cleaned.csv`.
+### 1. Extract (Load CSV)
+- Input file: `Airline_Delay_Cause.csv`
+- Loaded using `pandas.read_csv()`
 
-## Step 4: Data Visualization (Seaborn)
+### 2. Transform (Clean and Prepare)
+- Remove duplicates
+- Handle missing values
+- Fix data types
+- Create derived metrics such as delay rate, cancellation rate, and diversion rate
 
-Required visualizations included in `Airline_delay.ipynb`:
-1. Distribution of values in an attribute: `delay_rate_%` (histogram).
-2. Correlation of attributes (heatmap).
-3. Average Delay Rate by Month (bar chart).
-4. Top 10 Airlines by Average Delay Rate (bar chart).
-5. Total Delay Minutes by Cause (bar chart).
+### 3. Load (Save Cleaned Data)
+- Output file: `Airline_Delay_Cleaned.csv`
+- Saved using `DataFrame.to_csv(..., index=False)`
 
-### Insights Generated
-- Delay rate distribution is right-skewed: most cases have lower delay rates, with fewer extreme high-delay cases.
-- Monthly averages reveal seasonality in delay behavior.
-- Airline ranking shows which carriers have higher average delay rates in this dataset.
-- Cause totals show dominant contributors to overall delay minutes.
-- Correlation heatmap highlights attributes that move together strongly.
+### 4. Data Visualization (Seaborn)
+The notebook includes:
+1. Distribution of delay rate (histogram)
+2. Correlation heatmap of key numerical attributes
+3. Average delay rate by month (bar chart)
+4. Top 10 airlines by average delay rate (bar chart)
+5. Total delay minutes by cause (bar chart)
 
-## Requirements
-Install from `requirements.txt`:
-- pandas
-- numpy
-- matplotlib
-- seaborn
-- ipykernel
+## Insights (Summary)
+- Delay rate is right-skewed: most observations have lower delay rates, with fewer extreme high-delay cases.
+- Delay behavior varies by month, indicating seasonal patterns.
+- Some airlines consistently show higher average delay rates than others.
+- Certain delay causes contribute much more total delay minutes than others.
+- Correlation analysis helps identify attributes that move together and can guide further modeling.
 
-## Run Locally
+## How To Run
 ```powershell
 cd "C:\Users\Hp\Desktop\APython\Data Pipeline\Flight-Delay-Data-Pipeline"
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 pip install -r requirements.txt
-python -m ipykernel install --user --name flight-delay-venv --display-name "Python (flight-delay-venv)"
 jupyter notebook
 ```
 
-## Kernel Loading Troubleshooting
-1. In Jupyter, select kernel: `Python (flight-delay-venv)`.
-2. Use `Kernel` -> `Restart Kernel and Clear Outputs`.
-3. If still stuck, close processes and reopen:
-```powershell
-Get-Process python,python3,jupyter -ErrorAction SilentlyContinue | Stop-Process -Force
-```
+## Requirements
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- ipykernel
