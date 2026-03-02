@@ -14,7 +14,7 @@ The pipeline should include:
 - Any 3 additional graphs
 5. Generate insights from the visualizations and explain them.
 
-## Dataset Description (Short)
+## Dataset Description 
 This dataset provides detailed information on flight arrivals and delays for U.S. airports, categorized by carriers. It includes metrics such as arriving flights, delays over 15 minutes, cancellations, diversions, and delay-minute breakdown by carrier, weather, NAS (National Airspace System), security, and late aircraft. It can be used to analyze carrier and airport performance and understand key factors contributing to delays.
 
 ## Project Workflow
